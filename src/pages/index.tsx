@@ -1,9 +1,136 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from '@/styles/Home.module.css'
+import styled from "@emotion/styled";
+import Head from "next/head";
+import Image from "next/image";
+import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
+import { CiMedal } from "react-icons/ci";
+import { GrLanguage } from "react-icons/gr";
+import pfp from "../../public/pfp.jpg";
 
-const inter = Inter({ subsets: ['latin'] })
+const Main = styled.main`
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: white;
+`;
+
+const NavBar = styled.nav`
+  padding-top: 10px;
+  padding-bottom: 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const Resume = styled.a`
+  padding: 15px;
+  background-color: #525252;
+  font-size: large;
+  border-radius: 7px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+`;
+
+const SayHello = styled.a`
+  padding: 15px;
+  color: white;
+  font-size: large;
+  border-radius: 7px;
+  background-color: #525252;
+  font-weight: bold;
+  width: fit-content;
+  cursor: pointer;
+`;
+
+const Info = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  h2 {
+    font-size: 3rem;
+    color: #525252;
+  }
+  p {
+    max-width: 75ch;
+  }
+`;
+
+const InfoText = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
+
+const NavBarButtons = styled.div`
+  display: flex;
+  gap: 10px;
+`;
+
+const MyIcons = styled.div`
+  padding-top: 5rem;
+  display: flex;
+  justify-content: center;
+  font-size: 3vh;
+  gap: 15px;
+  * {
+    cursor: pointer;
+  }
+`;
+
+const AboutMe = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+`;
+
+const AboutMeTitles = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const AboutMeBox = styled.div`
+  gap: 1.5rem;
+  padding: 1em;
+  border: 1px solid #e6e6e6;
+  border-radius: 5%;
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 1fr;
+`;
+
+const AboutMeInfo = styled.div`
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  .grid-col-span-3 {
+    grid-column: span 3;
+    max-width: 75ch;
+  }
+`;
+
+const CustomCiMedal = styled(CiMedal)`
+  height: 3em;
+  width: 3em;
+`;
+
+const CustomGrLanguage = styled(GrLanguage)`
+  height: 3em;
+  width: 3em;
+`;
+
+const ToolsDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  p {
+    max-width: 75ch;
+  }
+`;
+
+const PFP = styled(Image)`
+  height: 400px;
+  width: auto;
+  border-radius: 5%;
+`;
 
 export default function Home() {
   return (
@@ -14,110 +141,79 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>src/pages/index.tsx</code>
-          </p>
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              By{' '}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-              />
-            </a>
-          </div>
-        </div>
+      <Main>
+        <section>
+          <NavBar>
+            <h1>Diogo</h1>
+            <NavBarButtons>
+              <Resume href="https://www.linkedin.com/in/diogo-santos-02336b177/">
+                Resume
+              </Resume>
+            </NavBarButtons>
+          </NavBar>
+          <Info>
+            <InfoText>
+              <h2>Diogo Santos </h2>
+              <h3>Software Developer.</h3>
+              <p>
+                Developer for over 2 years, been working with fun things like
+                chat bots, augmented reality and Reactjs.
+              </p>
+              <SayHello>Say Hello</SayHello>
+            </InfoText>
+            <PFP alt="pfp" src={pfp}></PFP>
+          </Info>
+        </section>
+        <section>
+          <AboutMeTitles>
+            <h3>About me</h3>
+            <h2>Introduction</h2>
+          </AboutMeTitles>
+          <AboutMe>
+            <div>
+              <PFP alt="pfp" src={pfp}></PFP>
+            </div>
+            <AboutMeInfo>
+              <AboutMeBox>
+                <CustomCiMedal />
+                <div>Experience</div>
+                <div>2.5 years</div>
+              </AboutMeBox>
+              <AboutMeBox>
+                <CustomGrLanguage />
+                <div>English</div>
+                <div>10/10</div>
+              </AboutMeBox>
+              <AboutMeBox>
+                <CustomGrLanguage />
+                <div>Portuguese</div>
+                <div>10/10</div>
+              </AboutMeBox>
+              <p className="grid-col-span-3">
+                Since the beginning of my carrer as a developer, I've worked
+                remotely for companies, collaborating with great people to
+                create solutions for businesses and consumers.
+              </p>
+              <Resume href="https://www.linkedin.com/in/diogo-santos-02336b177/">
+                Download CV
+              </Resume>
+            </AboutMeInfo>
+          </AboutMe>
 
-        <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          />
-          <div className={styles.thirteen}>
-            <Image
-              src="/thirteen.svg"
-              alt="13"
-              width={40}
-              height={31}
-              priority
-            />
-          </div>
-        </div>
-
-        <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
+          <MyIcons>
+            <AiFillLinkedin href="https://www.linkedin.com/in/diogo-santos-02336b177/" />
+            <AiFillGithub href="https://github.com/DiogoicdSantos" />
+          </MyIcons>
+          <ToolsDiv>
+            <h3>Great Software</h3>
+            <h3>Tools I've used</h3>
+            <p>Reactjs</p>
+            <p>Nodejs</p>
+            <p>Unity</p>
+            <p>Chat bots</p>
+          </ToolsDiv>
+        </section>
+      </Main>
     </>
-  )
+  );
 }
